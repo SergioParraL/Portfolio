@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Sergio Parra | Presentación</title>
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="shortcut icon" href="imagenes/icono.ico">
+	<script type="text/javascript" src="js/index.js"></script> 
+</head>
+<body>
+<div id="main">
+	<article class="section_1">
+		<div class="container_1">
+			<img src="imagenes/photo_perfil.png" alt="imagen de perfil">
+		</div>
+		<section class="container_2">
+			<p class="nombre"><h2>Sergio Parra</h2></p>
+			<p class="des">
+				Técnico Superior en IT con hambre a lo desconocido.<br> Internauta & Gamer.
+			</p>
+			<button id='formButton' class="showForm icon-in">
+				Hablemos
+			</button>
+			<div id="fomWrapper" class="form formMargin">
+				<form id='Form' action="https://formspree.io/f/xknkvvbp" method="POST">
+					<p><h1>Envíame un Correo</h1></p>
+					<span id='btnClose' class="btn-close"></span>
+					<label class='inputDate' for="name">Nombre</label>
+					<input name='name' id="name" class='inputDate icon-in name' type="text" required placeholder="  Cristian">
+					<label class='inputDate' for="mail">Correo</label>
+					<input name='mail' id="mail" class='inputDate icon-in mail' type="text" required placeholder="  m@gmail.com">
+					<label class='inputDate' for="message">Descripción</label>
+					<textarea name='message' id='message' class='inputDate' name="cajaTexto" id="" cols="30" rows="10" required placeholder="..."></textarea>
+					<button type="submit" class="formButton icon-in">Enviar</button>
+				</form>
+			</div>
+		</section>
+	</article>
+	<aside class="section_2">
+		<ul>
+			<li id='Portafolio'>
+				<a href="https://sergioparral.github.io/PortFolio/rutas/Portfolio.html" target="blank"><img src="imagenes/portafolio.svg" alt=""> </a>
+			</li> 
+			<li id='LinkedIn'>
+				<a href="https://www.linkedin.com/in/sergioparral/" target="_blank"><img src="imagenes/logo-linkedin.svg" alt=""></a>
+			</li>
+			<li id='GitHub'>
+				<a href="https://github.com/SergioParraL" target="_blank"><img src="imagenes/logo-git	hub.svg" alt=""></a>
+			</li>
+			<li id='Twitter'>
+				<a href="https://twitter.com/Parranopolis00" target="_blank"><img src="imagenes/logo-twitter.svg" alt=""> </a>
+			</li>
+		</ul>
+	</aside>
+</div>	
+	
+	<script type="text/javascript">
+		const d = document
+
+		let contentForm = d.getElementById('formButton')
+		let btnClose = d.getElementById('btnClose')
+
+		btnClose.addEventListener('click',HiddenForms)
+
+
+		contentForm.addEventListener('click',showFormButton)
+
+		const $formSubmit = d.querySelector('#Form')
+
+		$formSubmit.addEventListener('submit',handleSubmit)
+
+		async function handleSubmit (event) {
+			event.preventDefault()
+			const form = new FormData(event.target)
+			
+			fetch(event.target.action, {
+				method: this.method,
+				body: form,
+				header: {
+					'Accept' : 'application/json'
+				}
+			}).then(response => {
+				alert('Perfecto, Email enviado')
+	        	// form.reset()
+	      	}).catch(error => {
+	      		HiddenForms()
+	      	});
+		}
+
+	</script>
+
+</body>
+</html>
