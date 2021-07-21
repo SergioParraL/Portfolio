@@ -11,4 +11,4 @@ function HiddenForms(){
 	cleanForm.reset()
 	form.classList.add('formHi')
 	form.classList.remove('formShow')
-}
+}	
