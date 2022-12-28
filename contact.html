@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>contact | Programmer, Front-end & Autodidact</title>
+    <link rel="shortcut icon" href="img/SL-logo-purple.ico">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel='stylesheet' href="css/index.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kufam:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section class="col s12 row divMenu">
+        <div class="col s6 menu left-align">
+            <a href="index.html">
+                <img class="logo" src="img/SL-logo-purple.svg" alt="">
+            </a>
+        </div>
+        <div class="col s6 menu right-align">
+            <button type="submit" id='' class="comuni">
+                <a href="index.html" class="aSayHello">
+                    Come Back
+                </a>
+            </button>
+        </div>
+    </section>
+    <section>
+        <article class="avatarContact">
+            <img src="img/mf-avatar.svg" alt="avatar">
+        </article>
+        <article class="titleP">
+            <h1>
+                Thanks for taking the time to reach out. How can I help you today?
+            </h1>
+        </article>
+    </section>
+    <section>
+        <article class="form">
+            <form id="my-form" action="https://formspree.io/f/mjvlrkay" method="POST">
+                <article class="wrapperContact_1">
+                    <div>
+                        <label class="subtitleP">Name</label>
+                        <input type="text" name="name">
+                    </div>
+                    <div>
+                        <label>Email:</label>
+                        <input type="email" name="email" />
+                    </div>
+                </article>
+                <article class="wrapperContact_2">
+                    <div>
+                        <label>Message:</label>
+                        <textarea type='textarea' name="message" id="" cols="30" rows="10"></textarea>
+                    </div>
+                </article>
+                <article class="wrapperContact_3">
+                    <button class="comuni" id="my-form-button">Submit</button>
+                    <div id="my-form-status" class="opacitiMessage message"></div>
+                </article>
+            </form>
+        </article>
+    </section>
+    <script>
+
+    var form = document.getElementById("my-form");
+    
+    async function handleSubmit(event) {
+      event.preventDefault();
+      var status = document.getElementById("my-form-status");
+      var data = new FormData(event.target);
+      fetch(event.target.action, {
+        method: form.method,
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+            status.innerHTML = "Thanks for your submission!";
+            status.classList.add('showMessage')
+            status.classList.remove('opacitiMessage')
+            setTimeout(()=>{
+                status.classList.add('opacitiMessage')
+                status.classList.remove('showMessage')
+            },5000)
+          form.reset()
+        } else {
+          response.json().then(data => {
+            if (Object.hasOwn(data, 'errors')) {
+              status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+            } else {
+              status.innerHTML = "Oops! There was a problem submitting your form"
+            }
+          })
+        }
+      }).catch(error => {
+        status.innerHTML = "Oops! There was a problem submitting your form"
+      });
+    }
+    form.addEventListener("submit", handleSubmit)
+    </script>
+</body>
+</html>
