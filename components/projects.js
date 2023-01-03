@@ -34,7 +34,7 @@ class MyProjects extends HTMLElement {
                         <h3>${this.title}</h3>
                       </div>
                       <div>
-                        <a href=${this.link} target='_blank'>In Construction</a>
+                        <a href=${this.link} target='_blank'>See Repo</a>
                       </div>
                     </figcaption>
                   </figure>
