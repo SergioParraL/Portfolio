@@ -1,4 +1,4 @@
-# 🌐 Sergio's Portfolio: [Portfolio](parranopolis.github.io/PortFolio/)
+# 🌐 Sergio's [Portfolio]:(parranopolis.github.io/PortFolio/)
 
 Welcome to the repository for my portfolio! This project showcases my skills and completed projects, built with a focus on responsive design and modern web standards.
 
